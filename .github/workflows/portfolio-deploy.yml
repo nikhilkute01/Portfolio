@@ -3,6 +3,7 @@ name: Portfolio
 on:
     push:
         branches: [main]
+    workflow_dispatch: 
 permissions: 
       pages: write
       id-token: write
@@ -12,7 +13,7 @@ jobs:
         runs-on: ubuntu-latest
         environment:  
             name: github-pages
-            url: steps.deployment.outputs.pages_url
+            url: ${{ steps.deployment.outputs.pages_url }}
         steps:
             - name: Checkout Code
               uses: actions/checkout@v4
