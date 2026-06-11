@@ -1,460 +1,257 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nikhil Kute — DevOps Engineer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  :root {
-    --teal-50:  #E1F5EE;
-    --teal-100: #9FE1CB;
-    --teal-400: #1D9E75;
-    --teal-600: #0F6E56;
-    --teal-800: #085041;
-    --navy:     #0d1117;
-    --navy-2:   #161b22;
-    --navy-3:   #21262d;
-    --navy-4:   #30363d;
-    --text-1:   #e6edf3;
-    --text-2:   #8b949e;
-    --text-3:   #58a6ff;
-    --amber:    #EF9F27;
-    --amber-bg: #2d2008;
-    --cert-gold:#f0c040;
-    --aws-orange: #FF9900;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--navy);
-    color: var(--text-1);
-    font-family: 'Space Grotesk', system-ui, sans-serif;
-    font-size: 15px;
-    line-height: 1.7;
-    min-height: 100vh;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(13,17,23,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--navy-4);
-    padding: 0 2rem;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 56px;
-  }
-  .nav-brand { font-size: 15px; font-weight: 600; color: var(--text-1); letter-spacing: -0.01em; }
-  .nav-brand span { color: var(--teal-400); }
-  .nav-links { display: flex; gap: 1.75rem; list-style: none; }
-  .nav-links a { font-size: 13px; color: var(--text-2); text-decoration: none; transition: color .2s; }
-  .nav-links a:hover { color: var(--text-1); }
-  .nav-avail { font-size: 12px; background: rgba(29,158,117,0.15); color: var(--teal-400); border: 1px solid rgba(29,158,117,0.3); padding: 4px 12px; border-radius: 999px; display: flex; align-items: center; gap: 6px; }
-  .pulse { width: 7px; height: 7px; background: var(--teal-400); border-radius: 50%; animation: pulse 2s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.3)} }
-
-  /* ── HERO ── */
-  .hero {
-    max-width: 900px; margin: 0 auto;
-    padding: 5rem 2rem 4rem;
-    display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center;
-  }
-  .hero-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--teal-400); letter-spacing: 0.08em; margin-bottom: 1rem; }
-  .hero-name { font-size: clamp(2.4rem, 5vw, 3.5rem); font-weight: 600; line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 0.5rem; }
-  .hero-name em { font-style: normal; color: var(--teal-400); }
-  .hero-title { font-size: 1.1rem; color: var(--text-2); margin-bottom: 1.5rem; }
-  .hero-location { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-2); margin-bottom: 2rem; }
-  .hero-location svg { color: var(--teal-400); }
-  .hero-ctas { display: flex; gap: 10px; flex-wrap: wrap; }
-  .btn-primary { background: var(--teal-400); color: #fff; padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 500; text-decoration: none; transition: background .2s; border: none; cursor: pointer; }
-  .btn-primary:hover { background: var(--teal-600); }
-  .btn-ghost { background: transparent; color: var(--text-1); padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 500; text-decoration: none; border: 1px solid var(--navy-4); transition: border-color .2s, color .2s; }
-  .btn-ghost:hover { border-color: var(--teal-400); color: var(--teal-400); }
-
-  .hero-avatar-wrap { position: relative; }
-  .avatar-ring {
-    width: 160px; height: 160px; border-radius: 50%;
-    background: linear-gradient(135deg, var(--teal-400), #1a6b9a);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 52px; font-weight: 600; color: #fff;
-    position: relative; z-index: 1;
-    box-shadow: 0 0 0 4px var(--navy), 0 0 0 6px var(--teal-400);
-  }
-  .avatar-badge {
-    position: absolute; bottom: 4px; right: 4px;
-    background: var(--aws-orange); color: #000; font-size: 10px; font-weight: 600;
-    padding: 3px 8px; border-radius: 999px; border: 2px solid var(--navy);
-    white-space: nowrap; z-index: 2;
-  }
-
-  /* ── SECTIONS ── */
-  section { max-width: 900px; margin: 0 auto; padding: 3.5rem 2rem; border-top: 1px solid var(--navy-3); }
-  .section-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: var(--teal-400); text-transform: uppercase; margin-bottom: 1.5rem; }
-  .section-heading { font-size: 1.4rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
-
-  /* ── TERMINAL ── */
-  .terminal {
-    background: var(--navy-2); border: 1px solid var(--navy-4);
-    border-radius: 12px; overflow: hidden; margin-bottom: 0;
-  }
-  .terminal-titlebar {
-    background: var(--navy-3); padding: 10px 16px;
-    display: flex; align-items: center; gap: 8px;
-    border-bottom: 1px solid var(--navy-4);
-  }
-  .tb-dot { width: 11px; height: 11px; border-radius: 50%; }
-  .tb-red { background: #ff5f57; } .tb-yellow { background: #febc2e; } .tb-green { background: #28c840; }
-  .tb-title { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--text-2); margin-left: 8px; }
-  .terminal-body { padding: 1.25rem 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 2; }
-  .t-prompt { color: var(--teal-400); }
-  .t-cmd { color: var(--text-1); }
-  .t-comment { color: var(--text-2); }
-  .t-string { color: #a5d6ff; }
-  .t-key { color: var(--amber); }
-  .t-val { color: var(--teal-100); }
-  .t-line { margin-bottom: 2px; }
-  .cursor { display: inline-block; width: 8px; height: 14px; background: var(--teal-400); animation: blink 1.2s step-end infinite; vertical-align: -2px; }
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
-
-  /* ── CERT CARD ── */
-  .cert-card {
-    background: var(--navy-2); border: 1px solid rgba(255,153,0,0.35);
-    border-radius: 12px; padding: 1.25rem 1.5rem;
-    display: flex; align-items: center; gap: 1.25rem;
-    position: relative; overflow: hidden;
-  }
-  .cert-card::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, var(--aws-orange), #fff3cd, var(--aws-orange));
-  }
-  .cert-icon {
-    width: 56px; height: 56px; border-radius: 10px;
-    background: rgba(255,153,0,0.12); border: 1px solid rgba(255,153,0,0.3);
-    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    font-size: 26px;
-  }
-  .cert-body { flex: 1; }
-  .cert-name { font-weight: 600; font-size: 15px; color: var(--text-1); margin-bottom: 3px; }
-  .cert-issuer { font-size: 13px; color: var(--text-2); }
-  .cert-badge {
-    font-family: 'JetBrains Mono', monospace; font-size: 11px;
-    background: rgba(255,153,0,0.12); color: var(--aws-orange);
-    border: 1px solid rgba(255,153,0,0.3); padding: 4px 12px; border-radius: 999px;
-    white-space: nowrap;
-  }
-
-  /* ── SKILL GRID ── */
-  .skill-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); gap: 10px; }
-  .skill-card {
-    background: var(--navy-2); border: 1px solid var(--navy-4);
-    border-radius: 10px; padding: 1rem; text-align: center;
-    transition: border-color .2s, transform .2s;
-  }
-  .skill-card:hover { border-color: var(--teal-400); transform: translateY(-2px); }
-  .skill-icon-wrap { font-size: 24px; margin-bottom: 8px; color: var(--teal-400); }
-  .skill-card-name { font-size: 13px; font-weight: 500; color: var(--text-1); margin-bottom: 3px; }
-  .skill-card-tools { font-size: 11px; color: var(--text-2); line-height: 1.5; }
-
-  /* ── PROJECTS ── */
-  .proj-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .proj-card {
-    background: var(--navy-2); border: 1px solid var(--navy-4);
-    border-radius: 12px; padding: 1.25rem;
-    transition: border-color .2s;
-  }
-  .proj-card:hover { border-color: var(--teal-400); }
-  .proj-tag { font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 999px; display: inline-block; margin-bottom: 10px; }
-  .tag-teal { background: rgba(29,158,117,0.15); color: var(--teal-400); border: 1px solid rgba(29,158,117,0.3); }
-  .tag-blue { background: rgba(88,166,255,0.1); color: #58a6ff; border: 1px solid rgba(88,166,255,0.25); }
-  .tag-amber { background: rgba(239,159,39,0.12); color: var(--amber); border: 1px solid rgba(239,159,39,0.25); }
-  .tag-purple { background: rgba(188,140,255,0.1); color: #bc8cff; border: 1px solid rgba(188,140,255,0.25); }
-  .proj-card-title { font-size: 14px; font-weight: 600; color: var(--text-1); margin-bottom: 6px; }
-  .proj-card-desc { font-size: 13px; color: var(--text-2); line-height: 1.55; }
-
-  /* ── TECH TAGS ── */
-  .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
-  .tech-tag {
-    font-family: 'JetBrains Mono', monospace; font-size: 12px;
-    background: var(--navy-2); color: var(--text-2);
-    border: 1px solid var(--navy-4); padding: 5px 13px; border-radius: 6px;
-    transition: color .2s, border-color .2s;
-  }
-  .tech-tag:hover { color: var(--teal-400); border-color: var(--teal-400); }
-  .tech-tag.hot { color: var(--teal-400); border-color: rgba(29,158,117,0.4); background: rgba(29,158,117,0.08); }
-
-  /* ── STATS ── */
-  .stat-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
-  .stat-block {
-    background: var(--navy-2); border: 1px solid var(--navy-4);
-    border-radius: 10px; padding: 1.1rem; text-align: center;
-  }
-  .stat-num { font-size: 1.8rem; font-weight: 600; color: var(--teal-400); letter-spacing: -0.03em; }
-  .stat-lbl { font-size: 12px; color: var(--text-2); margin-top: 3px; }
-
-  /* ── FOOTER ── */
-  footer {
-    max-width: 900px; margin: 0 auto;
-    padding: 2rem;
-    border-top: 1px solid var(--navy-3);
-    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
-  }
-  .footer-left { font-size: 13px; color: var(--text-2); }
-  .footer-left strong { color: var(--text-1); }
-  .social-row { display: flex; gap: 12px; }
-  .social-link {
-    width: 36px; height: 36px; border-radius: 8px;
-    background: var(--navy-2); border: 1px solid var(--navy-4);
-    display: flex; align-items: center; justify-content: center;
-    color: var(--text-2); text-decoration: none; font-size: 14px;
-    transition: color .2s, border-color .2s;
-  }
-  .social-link:hover { color: var(--teal-400); border-color: var(--teal-400); }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 640px) {
-    .hero { grid-template-columns: 1fr; text-align: center; padding: 3rem 1.25rem 2.5rem; }
-    .hero-ctas { justify-content: center; }
-    .hero-avatar-wrap { display: flex; justify-content: center; order: -1; }
-    .proj-grid { grid-template-columns: 1fr; }
-    .stat-row { grid-template-columns: 1fr 1fr; }
-    nav .nav-links { display: none; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .pulse, .cursor { animation: none; }
-    * { transition: none !important; }
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kute Nikhil - DevOps Engineer | AWS Certified | Cloud & Automation Specialist">
+  <title>Kute Nikhil | DevOps Engineer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.441.0/lucide.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .hero-bg { background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%); }
+    .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); }
+  </style>
 </head>
-<body>
+<body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-gray-100">
 
-<!-- NAV -->
-<nav>
-  <div class="nav-brand">NK<span>.</span>dev</div>
-  <ul class="nav-links">
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#certifications">Certifications</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#stack">Stack</a></li>
-  </ul>
-  <div class="nav-avail">
-    <div class="pulse"></div>
-    Open to work
-  </div>
-</nav>
-
-<!-- HERO -->
-<div class="hero">
-  <div>
-    <div class="hero-eyebrow">// DevOps Engineer · Pune, India</div>
-    <h1 class="hero-name">Nikhil<br><em>Kute</em></h1>
-    <p class="hero-title">Building pipelines that ship fast, infrastructure that scales, and systems that don't page you at 3 AM.</p>
-    <div class="hero-location">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      Pune, Maharashtra, India
-    </div>
-    <div class="hero-ctas">
-      <a href="mailto:nikhil.kute@email.com" class="btn-primary">Get in touch</a>
-      <a href="#projects" class="btn-ghost">View projects</a>
-    </div>
-  </div>
-  <div class="hero-avatar-wrap">
-    <div class="avatar-ring">NK</div>
-    <div class="avatar-badge">☁ AWS Certified</div>
-  </div>
-</div>
-
-<!-- TERMINAL -->
-<section id="about">
-  <div class="section-label">// about</div>
-  <div class="terminal">
-    <div class="terminal-titlebar">
-      <div class="tb-dot tb-red"></div>
-      <div class="tb-dot tb-yellow"></div>
-      <div class="tb-dot tb-green"></div>
-      <span class="tb-title">nikhil@devops-box ~ zsh</span>
-    </div>
-    <div class="terminal-body">
-      <div class="t-line"><span class="t-prompt">➜</span> <span class="t-cmd">cat profile.yaml</span></div>
-      <div class="t-line"><span class="t-key">name:</span>        <span class="t-val">Nikhil Kute</span></div>
-      <div class="t-line"><span class="t-key">role:</span>        <span class="t-val">DevOps Engineer</span></div>
-      <div class="t-line"><span class="t-key">location:</span>    <span class="t-val">Pune, Maharashtra 🇮🇳</span></div>
-      <div class="t-line"><span class="t-key">certified:</span>   <span class="t-val">AWS Cloud Practitioner ✓</span></div>
-      <div class="t-line"><span class="t-key">focus:</span>       <span class="t-val">[CI/CD, IaC, Cloud, Containers, Observability]</span></div>
-      <div class="t-line"><span class="t-key">philosophy:</span>  <span class="t-string">"Automate everything. Monitor everything. Sleep soundly."</span></div>
-      <br>
-      <div class="t-line"><span class="t-prompt">➜</span> <span class="t-cmd">uptime</span></div>
-      <div class="t-line"><span class="t-comment"># Systems up. Pipelines green. No incidents in production.</span></div>
-      <div class="t-line"><span class="t-prompt">➜</span> <span class="cursor"></span></div>
-    </div>
-  </div>
-</section>
-
-<!-- STATS -->
-<section>
-  <div class="stat-row">
-    <div class="stat-block">
-      <div class="stat-num">99.9%</div>
-      <div class="stat-lbl">Uptime target</div>
-    </div>
-    <div class="stat-block">
-      <div class="stat-num">&lt;8m</div>
-      <div class="stat-lbl">Avg. pipeline time</div>
-    </div>
-    <div class="stat-block">
-      <div class="stat-num">AWS ✓</div>
-      <div class="stat-lbl">Cloud certified</div>
-    </div>
-  </div>
-</section>
-
-<!-- CERTIFICATION -->
-<section id="certifications">
-  <div class="section-label">// certifications</div>
-  <h2 class="section-heading" style="margin-bottom:1.25rem">Credentials</h2>
-  <div class="cert-card">
-    <div class="cert-icon">☁</div>
-    <div class="cert-body">
-      <div class="cert-name">AWS Certified Cloud Practitioner</div>
-      <div class="cert-issuer">Amazon Web Services (AWS) · Foundational level</div>
-    </div>
-    <div class="cert-badge">Verified ✓</div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-  <div class="section-label">// skills</div>
-  <h2 class="section-heading" style="margin-bottom:1.25rem">What I work with</h2>
-  <div class="skill-grid">
-    <div class="skill-card">
-      <div class="skill-icon-wrap">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-gray-200 dark:border-slate-800 z-50">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">Nikhil Kute</h1>
+      <div class="flex items-center gap-8">
+        <a href="#about" class="hover:text-blue-600 dark:hover:text-cyan-400 transition-colors">About</a>
+        <a href="#skills" class="hover:text-blue-600 dark:hover:text-cyan-400 transition-colors">Skills</a>
+        <a href="#experience" class="hover:text-blue-600 dark:hover:text-cyan-400 transition-colors">Experience</a>
+        <a href="#projects" class="hover:text-blue-600 dark:hover:text-cyan-400 transition-colors">Projects</a>
+        <a href="#contact" class="hover:text-blue-600 dark:hover:text-cyan-400 transition-colors">Contact</a>
+        <button onclick="toggleTheme()" class="p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-slate-800">
+          <i class="fas fa-moon dark:hidden"></i>
+          <i class="fas fa-sun hidden dark:block"></i>
+        </button>
       </div>
-      <div class="skill-card-name">Cloud</div>
-      <div class="skill-card-tools">AWS · GCP · Azure</div>
     </div>
-    <div class="skill-card">
-      <div class="skill-icon-wrap">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 3l-4 4-4-4"/></svg>
-      </div>
-      <div class="skill-card-name">Containers</div>
-      <div class="skill-card-tools">Docker · Kubernetes · Helm</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon-wrap">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 009 9"/></svg>
-      </div>
-      <div class="skill-card-name">CI/CD</div>
-      <div class="skill-card-tools">Jenkins · GitHub Actions · GitLab CI</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon-wrap">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-      </div>
-      <div class="skill-card-name">IaC</div>
-      <div class="skill-card-tools">Terraform · Ansible · Pulumi</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon-wrap">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-      </div>
-      <div class="skill-card-name">Monitoring</div>
-      <div class="skill-card-tools">Prometheus · Grafana · ELK</div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon-wrap">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-      </div>
-      <div class="skill-card-name">Security</div>
-      <div class="skill-card-tools">DevSecOps · Vault · SAST</div>
-    </div>
-  </div>
-</section>
+  </nav>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="section-label">// projects</div>
-  <h2 class="section-heading" style="margin-bottom:1.25rem">Project highlights</h2>
-  <div class="proj-grid">
-    <div class="proj-card">
-      <span class="proj-tag tag-teal">Kubernetes</span>
-      <div class="proj-card-title">Zero-downtime deployment pipeline</div>
-      <div class="proj-card-desc">Blue-green and canary releases with automated rollback on health check failures. Eliminated deployment windows entirely.</div>
+  <!-- Hero -->
+  <section class="hero-bg min-h-screen flex items-center pt-20">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="text-5xl md:text-7xl font-bold leading-tight mb-4">
+          Kute Nikhil
+        </h2>
+        <p class="text-3xl text-blue-400 mb-6">DevOps Engineer | Cloud & Automation Specialist</p>
+        <p class="text-xl text-gray-300 mb-8 max-w-lg">
+          AWS Certified Cloud Practitioner passionate about building scalable, reliable, and automated cloud infrastructure.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/Nikhil_Kute_Resume.pdf" target="_blank" 
+             class="px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-2xl font-semibold flex items-center gap-3 transition-all">
+            <i class="fas fa-download"></i> Download Resume
+          </a>
+          <a href="https://github.com/yourusername" target="_blank"
+             class="px-8 py-4 border border-gray-400 hover:border-white rounded-2xl font-semibold flex items-center gap-3 transition-all">
+            <i class="fab fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+      <div class="flex justify-center">
+        <div class="w-80 h-80 rounded-3xl overflow-hidden border-4 border-blue-500 shadow-2xl">
+          <img src="https://via.placeholder.com/400x400/1e2937/64748b?text=Nikhil+Kute" 
+               alt="Kute Nikhil" class="w-full h-full object-cover">
+        </div>
+      </div>
     </div>
-    <div class="proj-card">
-      <span class="proj-tag tag-blue">Terraform · AWS</span>
-      <div class="proj-card-title">Multi-environment IaC framework</div>
-      <div class="proj-card-desc">Reusable Terraform modules provisioning dev, staging, and prod across AWS with state locking and drift detection.</div>
-    </div>
-    <div class="proj-card">
-      <span class="proj-tag tag-amber">Observability</span>
-      <div class="proj-card-title">Centralised logging & alerting</div>
-      <div class="proj-card-desc">ELK stack plus Prometheus/Grafana dashboards with PagerDuty on-call routing. MTTR reduced by 60%.</div>
-    </div>
-    <div class="proj-card">
-      <span class="proj-tag tag-purple">GitHub Actions</span>
-      <div class="proj-card-title">Automated release workflow</div>
-      <div class="proj-card-desc">Lint → test → build → security scan → deploy in under 8 minutes, with full audit trail and Slack notifications.</div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- STACK -->
-<section id="stack">
-  <div class="section-label">// tech stack</div>
-  <h2 class="section-heading" style="margin-bottom:1.25rem">Tools & technologies</h2>
-  <div class="tag-cloud">
-    <span class="tech-tag hot">Linux</span>
-    <span class="tech-tag hot">Docker</span>
-    <span class="tech-tag hot">Kubernetes</span>
-    <span class="tech-tag hot">Terraform</span>
-    <span class="tech-tag hot">AWS</span>
-    <span class="tech-tag hot">GitHub Actions</span>
-    <span class="tech-tag">Ansible</span>
-    <span class="tech-tag">Helm</span>
-    <span class="tech-tag">Jenkins</span>
-    <span class="tech-tag">GitLab CI</span>
-    <span class="tech-tag">Prometheus</span>
-    <span class="tech-tag">Grafana</span>
-    <span class="tech-tag">Elasticsearch</span>
-    <span class="tech-tag">Logstash</span>
-    <span class="tech-tag">Kibana</span>
-    <span class="tech-tag">Python</span>
-    <span class="tech-tag">Bash</span>
-    <span class="tech-tag">Nginx</span>
-    <span class="tech-tag">Redis</span>
-    <span class="tech-tag">Vault</span>
-    <span class="tech-tag">ArgoCD</span>
-    <span class="tech-tag">Pulumi</span>
-    <span class="tech-tag">GCP</span>
-  </div>
-</section>
+  <!-- About -->
+  <section id="about" class="py-20 bg-white dark:bg-slate-900">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-4xl font-bold mb-8 text-center">About Me</h2>
+      <p class="text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+        Passionate Software & DevOps Engineer with hands-on experience in cloud technologies, backend development, 
+        and building scalable applications. AWS Certified Cloud Practitioner with practical exposure to containerization 
+        and cloud deployment. Strong foundation in automation, database optimization, and delivering high-performance systems.
+      </p>
+    </div>
+  </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-left">
-    <strong>Nikhil Kute</strong> · DevOps Engineer · Pune, India<br>
-    <span style="font-size:12px">nikhil.kute@email.com</span>
-  </div>
-  <div class="social-row">
-    <a href="https://github.com" class="social-link" title="GitHub" target="_blank" rel="noopener">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-    </a>
-    <a href="https://linkedin.com" class="social-link" title="LinkedIn" target="_blank" rel="noopener">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
-    </a>
-    <a href="mailto:nikhil.kute@email.com" class="social-link" title="Email">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-    </a>
-  </div>
-</footer>
+  <!-- Skills -->
+  <section id="skills" class="py-20 bg-gray-100 dark:bg-slate-950">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold mb-12 text-center">Technical Skills</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl card-hover">
+          <h3 class="font-semibold text-xl mb-6 flex items-center gap-3"><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
+          <ul class="space-y-3 text-gray-600 dark:text-gray-400">
+            <li>AWS (CLF-C02 Certified)</li>
+            <li>Kubernetes (Deployment Experience)</li>
+            <li>Docker & Containerization</li>
+            <li>CI/CD Pipelines</li>
+            <li>RESTful APIs & Backend Services</li>
+          </ul>
+        </div>
+        <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl card-hover">
+          <h3 class="font-semibold text-xl mb-6 flex items-center gap-3"><i class="fas fa-code"></i> Programming & Tools</h3>
+          <ul class="space-y-3 text-gray-600 dark:text-gray-400">
+            <li>Python, Java, SQL</li>
+            <li>Node.js, React.js, Laravel</li>
+            <li>MySQL, PostgreSQL</li>
+            <li>Git & Version Control</li>
+            <li>NumPy, Pandas, Matplotlib</li>
+          </ul>
+        </div>
+        <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl card-hover">
+          <h3 class="font-semibold text-xl mb-6 flex items-center gap-3"><i class="fas fa-chart-line"></i> Other</h3>
+          <ul class="space-y-3 text-gray-600 dark:text-gray-400">
+            <li>Database Optimization</li>
+            <li>Performance Tuning</li>
+            <li>Problem Solving (300+ DSA)</li>
+            <li>Agile Development</li>
+            <li>Monitoring & Analytics</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- Experience -->
+  <section id="experience" class="py-20 bg-white dark:bg-slate-900">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold mb-12 text-center">Experience</h2>
+      <div class="space-y-12">
+        <!-- Experience 1 -->
+        <div class="bg-gray-50 dark:bg-slate-800 p-8 rounded-3xl card-hover">
+          <div class="flex flex-wrap justify-between items-start mb-6">
+            <div>
+              <h3 class="text-2xl font-semibold">Software Developer</h3>
+              <p class="text-blue-600">Wiriya Technology Pvt. Ltd, Pune</p>
+            </div>
+            <p class="text-sm text-gray-500">Jun 2025 – Jan 2026</p>
+          </div>
+          <ul class="list-disc list-inside space-y-3 text-gray-600 dark:text-gray-400">
+            <li>Built and deployed full-stack applications using modern web technologies</li>
+            <li>Integrated RESTful APIs and optimized backend performance</li>
+            <li>Performed data analysis to identify bottlenecks and improve system efficiency</li>
+            <li>Contributed to cloud-based application development workflows</li>
+          </ul>
+        </div>
+
+        <!-- Experience 2 -->
+        <div class="bg-gray-50 dark:bg-slate-800 p-8 rounded-3xl card-hover">
+          <div class="flex flex-wrap justify-between items-start mb-6">
+            <div>
+              <h3 class="text-2xl font-semibold">Jr. Software Developer (Intern)</h3>
+              <p class="text-blue-600">Webech Software, Nashik</p>
+            </div>
+            <p class="text-sm text-gray-500">Jan 2025 – May 2025</p>
+          </div>
+          <ul class="list-disc list-inside space-y-3 text-gray-600 dark:text-gray-400">
+            <li>Developed backend services and RESTful APIs using Laravel</li>
+            <li>Optimized SQL queries and implemented caching strategies</li>
+            <li>Improved application performance and reduced response times</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="py-20 bg-gray-100 dark:bg-slate-950">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold mb-12 text-center">Featured Projects</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Project 1 -->
+        <div class="bg-white dark:bg-slate-900 rounded-3xl p-8 card-hover">
+          <h3 class="text-2xl font-semibold mb-3">AiShield Safety Tool for Women</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-6">AI-powered safety platform with real-time threat detection and live location tracking.</p>
+          <div class="flex flex-wrap gap-2 mb-8">
+            <span class="px-4 py-1 bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 rounded-full text-sm">Django</span>
+            <span class="px-4 py-1 bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 rounded-full text-sm">Kubernetes</span>
+            <span class="px-4 py-1 bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 rounded-full text-sm">IBM Cloud</span>
+            <span class="px-4 py-1 bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 rounded-full text-sm">Google Maps</span>
+          </div>
+          <a href="#" class="text-blue-600 hover:underline">View Project →</a>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="bg-white dark:bg-slate-900 rounded-3xl p-8 card-hover">
+          <h3 class="text-2xl font-semibold mb-3">Student Management System</h3>
+          <p class="text-gray-600 dark:text-gray-400 mb-6">Scalable full-stack management system with admissions, fees, and certificate modules.</p>
+          <div class="flex flex-wrap gap-2 mb-8">
+            <span class="px-4 py-1 bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 rounded-full text-sm">Laravel</span>
+            <span class="px-4 py-1 bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 rounded-full text-sm">MySQL</span>
+            <span class="px-4 py-1 bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 rounded-full text-sm">Node.js</span>
+          </div>
+          <a href="#" class="text-blue-600 hover:underline">View Project →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section class="py-20 bg-white dark:bg-slate-900">
+    <div class="max-w-6xl mx-auto px-6">
+      <h2 class="text-4xl font-bold mb-12 text-center">Certifications & Achievements</h2>
+      <div class="flex flex-wrap justify-center gap-6">
+        <div class="bg-gradient-to-br from-blue-600 to-cyan-500 text-white px-8 py-6 rounded-3xl text-center min-w-[280px]">
+          <i class="fas fa-award text-4xl mb-4"></i>
+          <p class="font-semibold">AWS Cloud Practitioner</p>
+          <p class="text-sm opacity-90">CLF-C02 Certified</p>
+        </div>
+        <div class="bg-white dark:bg-slate-800 px-8 py-6 rounded-3xl text-center min-w-[280px] border border-gray-200 dark:border-slate-700">
+          <p class="font-semibold">IBM Hackathon - Top 7 (State Level)</p>
+        </div>
+        <div class="bg-white dark:bg-slate-800 px-8 py-6 rounded-3xl text-center min-w-[280px] border border-gray-200 dark:border-slate-700">
+          <p class="font-semibold">300+ DSA Problems Solved</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="py-20 bg-gray-100 dark:bg-slate-950">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold mb-8">Education</h2>
+      <div class="bg-white dark:bg-slate-900 p-10 rounded-3xl">
+        <p class="font-semibold text-xl">B.Tech in Information Technology</p>
+        <p class="text-blue-600">Sanjivani College of Engineering, Kopargaon</p>
+        <p class="text-gray-500 mt-2">Oct 2022 – May 2026 | CGPA: 8.3</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="contact" class="bg-slate-900 text-white py-16">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <p class="text-2xl font-medium mb-4">Let's Connect</p>
+      <div class="flex justify-center gap-8 text-3xl mb-8">
+        <a href="https://github.com" target="_blank"><i class="fab fa-github hover:text-blue-400"></i></a>
+        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin hover:text-blue-400"></i></a>
+      </div>
+      <p class="text-gray-400">kutenikhil81@gmail.com | +91 9322308560</p>
+      <p class="mt-10 text-sm text-gray-500">Made with ❤️ by Kute Nikhil</p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      document.documentElement.classList.toggle('dark');
+    }
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        if (this.getAttribute('href').length > 1) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
