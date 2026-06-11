@@ -7,13 +7,23 @@
   <title>Kute Nikhil | DevOps Engineer</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.441.0/lucide.min.css" rel="stylesheet">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
     body { font-family: 'Inter', system-ui, sans-serif; }
     .hero-bg { background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%); }
     .card-hover { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
     .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); }
+    
+    /* Rotating logos */
+    .tech-logos {
+      display: flex;
+      gap: 2rem;
+      animation: rotateLogos 25s linear infinite;
+    }
+    @keyframes rotateLogos {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
   </style>
 </head>
 <body class="bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-gray-100">
@@ -27,6 +37,7 @@
         <a href="#skills" class="hover:text-blue-600 dark:hover:text-cyan-400 transition-colors">Skills</a>
         <a href="#experience" class="hover:text-blue-600 dark:hover:text-cyan-400 transition-colors">Experience</a>
         <a href="#projects" class="hover:text-blue-600 dark:hover:text-cyan-400 transition-colors">Projects</a>
+        <a href="#certifications" class="hover:text-blue-600 dark:hover:text-cyan-400 transition-colors">Certifications</a>
         <a href="#contact" class="hover:text-blue-600 dark:hover:text-cyan-400 transition-colors">Contact</a>
         <button onclick="toggleTheme()" class="p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-slate-800">
           <i class="fas fa-moon dark:hidden"></i>
@@ -48,11 +59,11 @@
           AWS Certified Cloud Practitioner passionate about building scalable, reliable, and automated cloud infrastructure.
         </p>
         <div class="flex flex-wrap gap-4">
-          <a href="/Nikhil_Kute_Resume.pdf" target="_blank" 
+          <a href="https://drive.google.com/file/d/your-resume-link/view" target="_blank" 
              class="px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-2xl font-semibold flex items-center gap-3 transition-all">
             <i class="fas fa-download"></i> Download Resume
           </a>
-          <a href="https://github.com/yourusername" target="_blank"
+          <a href="https://github.com" target="_blank"
              class="px-8 py-4 border border-gray-400 hover:border-white rounded-2xl font-semibold flex items-center gap-3 transition-all">
             <i class="fab fa-github"></i> GitHub
           </a>
@@ -60,7 +71,7 @@
       </div>
       <div class="flex justify-center">
         <div class="w-80 h-80 rounded-3xl overflow-hidden border-4 border-blue-500 shadow-2xl">
-          <img src="https://via.placeholder.com/400x400/1e2937/64748b?text=Nikhil+Kute" 
+          <img src="https://media.licdn.com/dms/image/v2/D4D03AQFa6ASuRyNtWA/profile-displayphoto-shrink_400_400/B4DZTBIhhcG8Ag-/0/1738407026789?e=1782950400&v=beta&t=Y1a1zq7NsIhqadtgOWkgt8GL4iOX3Xmn2U-WIXU9sS4" 
                alt="Kute Nikhil" class="w-full h-full object-cover">
         </div>
       </div>
@@ -83,15 +94,34 @@
   <section id="skills" class="py-20 bg-gray-100 dark:bg-slate-950">
     <div class="max-w-6xl mx-auto px-6">
       <h2 class="text-4xl font-bold mb-12 text-center">Technical Skills</h2>
+      
+      <!-- Rotating Tech Logos -->
+      <div class="overflow-hidden mb-16">
+        <div class="tech-logos whitespace-nowrap">
+          <div class="flex gap-12 items-center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/2560px-Amazon_Web_Services_Logo.svg.png" class="h-12 opacity-75 hover:opacity-100" alt="AWS">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Docker-logo.svg/2560px-Docker-logo.svg.png" class="h-12 opacity-75 hover:opacity-100" alt="Docker">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Kubernetes_logo_without_workmark.svg/2560px-Kubernetes_logo_without_workmark.svg.png" class="h-12 opacity-75 hover:opacity-100" alt="Kubernetes">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/2560px-Node.js_logo.svg.png" class="h-12 opacity-75 hover:opacity-100" alt="Node.js">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2560px-React-icon.svg.png" class="h-12 opacity-75 hover:opacity-100" alt="React">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Laravel.svg/2560px-Laravel.svg.png" class="h-12 opacity-75 hover:opacity-100" alt="Laravel">
+            <!-- Duplicate for seamless loop -->
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/2560px-Amazon_Web_Services_Logo.svg.png" class="h-12 opacity-75 hover:opacity-100" alt="AWS">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Docker-logo.svg/2560px-Docker-logo.svg.png" class="h-12 opacity-75 hover:opacity-100" alt="Docker">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Kubernetes_logo_without_workmark.svg/2560px-Kubernetes_logo_without_workmark.svg.png" class="h-12 opacity-75 hover:opacity-100" alt="Kubernetes">
+          </div>
+        </div>
+      </div>
+
       <div class="grid md:grid-cols-3 gap-8">
         <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl card-hover">
           <h3 class="font-semibold text-xl mb-6 flex items-center gap-3"><i class="fas fa-cloud"></i> Cloud & DevOps</h3>
           <ul class="space-y-3 text-gray-600 dark:text-gray-400">
             <li>AWS (CLF-C02 Certified)</li>
-            <li>Kubernetes (Deployment Experience)</li>
             <li>Docker & Containerization</li>
+            <li>Kubernetes</li>
             <li>CI/CD Pipelines</li>
-            <li>RESTful APIs & Backend Services</li>
+            <li>RESTful APIs</li>
           </ul>
         </div>
         <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl card-hover">
@@ -100,8 +130,8 @@
             <li>Python, Java, SQL</li>
             <li>Node.js, React.js, Laravel</li>
             <li>MySQL, PostgreSQL</li>
-            <li>Git & Version Control</li>
-            <li>NumPy, Pandas, Matplotlib</li>
+            <li>Git & GitHub</li>
+            <li>NumPy, Pandas</li>
           </ul>
         </div>
         <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl card-hover">
@@ -111,7 +141,6 @@
             <li>Performance Tuning</li>
             <li>Problem Solving (300+ DSA)</li>
             <li>Agile Development</li>
-            <li>Monitoring & Analytics</li>
           </ul>
         </div>
       </div>
@@ -123,14 +152,13 @@
     <div class="max-w-6xl mx-auto px-6">
       <h2 class="text-4xl font-bold mb-12 text-center">Experience</h2>
       <div class="space-y-12">
-        <!-- Experience 1 -->
         <div class="bg-gray-50 dark:bg-slate-800 p-8 rounded-3xl card-hover">
           <div class="flex flex-wrap justify-between items-start mb-6">
             <div>
               <h3 class="text-2xl font-semibold">Software Developer</h3>
               <p class="text-blue-600">Wiriya Technology Pvt. Ltd, Pune</p>
             </div>
-            <p class="text-sm text-gray-500">Jun 2025 – Jan 2026</p>
+            <p class="text-sm text-gray-500">Feb 2026 – Present</p>
           </div>
           <ul class="list-disc list-inside space-y-3 text-gray-600 dark:text-gray-400">
             <li>Built and deployed full-stack applications using modern web technologies</li>
@@ -140,7 +168,6 @@
           </ul>
         </div>
 
-        <!-- Experience 2 -->
         <div class="bg-gray-50 dark:bg-slate-800 p-8 rounded-3xl card-hover">
           <div class="flex flex-wrap justify-between items-start mb-6">
             <div>
@@ -164,7 +191,6 @@
     <div class="max-w-6xl mx-auto px-6">
       <h2 class="text-4xl font-bold mb-12 text-center">Featured Projects</h2>
       <div class="grid md:grid-cols-2 gap-8">
-        <!-- Project 1 -->
         <div class="bg-white dark:bg-slate-900 rounded-3xl p-8 card-hover">
           <h3 class="text-2xl font-semibold mb-3">AiShield Safety Tool for Women</h3>
           <p class="text-gray-600 dark:text-gray-400 mb-6">AI-powered safety platform with real-time threat detection and live location tracking.</p>
@@ -172,12 +198,10 @@
             <span class="px-4 py-1 bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 rounded-full text-sm">Django</span>
             <span class="px-4 py-1 bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 rounded-full text-sm">Kubernetes</span>
             <span class="px-4 py-1 bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 rounded-full text-sm">IBM Cloud</span>
-            <span class="px-4 py-1 bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300 rounded-full text-sm">Google Maps</span>
           </div>
           <a href="#" class="text-blue-600 hover:underline">View Project →</a>
         </div>
 
-        <!-- Project 2 -->
         <div class="bg-white dark:bg-slate-900 rounded-3xl p-8 card-hover">
           <h3 class="text-2xl font-semibold mb-3">Student Management System</h3>
           <p class="text-gray-600 dark:text-gray-400 mb-6">Scalable full-stack management system with admissions, fees, and certificate modules.</p>
@@ -192,21 +216,25 @@
     </div>
   </section>
 
-  <!-- Certifications -->
-  <section class="py-20 bg-white dark:bg-slate-900">
+  <!-- Certifications & Achievements -->
+  <section id="certifications" class="py-20 bg-white dark:bg-slate-900">
     <div class="max-w-6xl mx-auto px-6">
       <h2 class="text-4xl font-bold mb-12 text-center">Certifications & Achievements</h2>
-      <div class="flex flex-wrap justify-center gap-6">
-        <div class="bg-gradient-to-br from-blue-600 to-cyan-500 text-white px-8 py-6 rounded-3xl text-center min-w-[280px]">
-          <i class="fas fa-award text-4xl mb-4"></i>
-          <p class="font-semibold">AWS Cloud Practitioner</p>
-          <p class="text-sm opacity-90">CLF-C02 Certified</p>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-gradient-to-br from-blue-600 to-cyan-500 text-white p-8 rounded-3xl text-center card-hover">
+          <i class="fas fa-award text-5xl mb-6"></i>
+          <h3 class="font-bold text-xl">AWS Cloud Practitioner</h3>
+          <p class="text-sm opacity-90 mt-2">CLF-C02 Certified</p>
         </div>
-        <div class="bg-white dark:bg-slate-800 px-8 py-6 rounded-3xl text-center min-w-[280px] border border-gray-200 dark:border-slate-700">
-          <p class="font-semibold">IBM Hackathon - Top 7 (State Level)</p>
+        <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl text-center border border-gray-200 dark:border-slate-700 card-hover">
+          <i class="fas fa-trophy text-5xl mb-6 text-amber-500"></i>
+          <h3 class="font-bold text-xl">IBM Hackathon</h3>
+          <p class="text-gray-600 dark:text-gray-400">Top 7 Team (State Level)</p>
         </div>
-        <div class="bg-white dark:bg-slate-800 px-8 py-6 rounded-3xl text-center min-w-[280px] border border-gray-200 dark:border-slate-700">
-          <p class="font-semibold">300+ DSA Problems Solved</p>
+        <div class="bg-white dark:bg-slate-800 p-8 rounded-3xl text-center border border-gray-200 dark:border-slate-700 card-hover">
+          <i class="fas fa-code text-5xl mb-6 text-emerald-500"></i>
+          <h3 class="font-bold text-xl">Competitive Programming</h3>
+          <p class="text-gray-600 dark:text-gray-400">300+ DSA Problems Solved</p>
         </div>
       </div>
     </div>
@@ -218,8 +246,7 @@
       <h2 class="text-4xl font-bold mb-8">Education</h2>
       <div class="bg-white dark:bg-slate-900 p-10 rounded-3xl">
         <p class="font-semibold text-xl">B.Tech in Information Technology</p>
-        <p class="text-blue-600">Sanjivani College of Engineering, Kopargaon</p>
-        <p class="text-gray-500 mt-2">Oct 2022 – May 2026 | CGPA: 8.3</p>
+        <p class="text-gray-500 mt-2">CGPA: 8.3 | Oct 2022 – May 2026</p>
       </div>
     </div>
   </section>
@@ -232,7 +259,7 @@
         <a href="https://github.com" target="_blank"><i class="fab fa-github hover:text-blue-400"></i></a>
         <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin hover:text-blue-400"></i></a>
       </div>
-      <p class="text-gray-400">kutenikhil81@gmail.com | +91 9322308560</p>
+      <p class="text-gray-400">nikhilkutepatil2005@gmail.com | +91 9322308560</p>
       <p class="mt-10 text-sm text-gray-500">Made with ❤️ by Kute Nikhil</p>
     </div>
   </footer>
@@ -241,14 +268,11 @@
     function toggleTheme() {
       document.documentElement.classList.toggle('dark');
     }
-    // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         if (this.getAttribute('href').length > 1) {
           e.preventDefault();
-          document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-          });
+          document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
         }
       });
     });
